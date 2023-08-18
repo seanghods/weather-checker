@@ -21,14 +21,25 @@ function showWeather(weather) {
   const regionName = createPart("h4", weather.location.region);
   showArea.appendChild(regionName);
 
-  const currentWeather = createPart("h4", weather.current.condition.text);
+  const currentWeather = createPart("h3", weather.current.condition.text);
+  currentWeather.classList.add("emphasis");
   showArea.appendChild(currentWeather);
+
+  const weatherIcon = createPart("img");
+  weatherIcon.src = weather.current.condition.icon;
+  showArea.appendChild(weatherIcon);
 
   const currentTemp = createPart(
     "h4",
     `${weather.current.temp_f} Degrees Fahrenheit`
   );
   showArea.appendChild(currentTemp);
+
+  const feelsLike = createPart(
+    "h4",
+    `Feels like ${weather.current.feelslike_f} Degrees`
+  );
+  showArea.appendChild(feelsLike);
 }
 
 function createPart(type, content) {
